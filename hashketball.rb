@@ -194,7 +194,6 @@ def player_numbers(team_name)
       end
     return output
   end
-end
 
 def player_stats(player_name)
 #returns all stats for a given player
