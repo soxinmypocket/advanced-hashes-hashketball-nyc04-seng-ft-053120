@@ -1,4 +1,4 @@
-# Write your code below game_hash
+require 'pry'
 def game_hash
   {
     home: {
@@ -126,4 +126,90 @@ def game_hash
   }
 end
 
-# Write code here
+def get_players
+#num_points_scored returns points scored for each player
+#takes in an argument of a player's name and
+#returns the number of points scored for that player.
+  players = game_hash.keys.map do |team|
+    game_hash[team][:players]
+  end
+  players.flatten
+end
+
+def num_points_scored(player_name)
+#Iterate through top level
+#game_hash.each do |location, team_data| #home and away teams
+#get all players
+    found_player = get_players.find do |player|
+      player[:player_name] == player_name
+    end
+  found_player[:points]
+end
+
+def shoe_size(player_name)
+#takes in an argument of a player's name and returns the shoe size for that player
+  found_player = get_players.find do |player|
+    #if player's name is equal to player_name
+    player[:player_name] == player_name
+  end
+  #return the shoe size
+  found_player[:shoe]
+end
+
+def team_names
+#operates on the game Hash to return an Array of the team names.
+  game_hash.map do |team, team_info|
+    team_info[:team_name]
+  end
+end
+
+def team_colors(team_input)
+#takes in an argument of the team name and returns an Array of that team's colors.
+  if team_input.downcase == "charlotte hornets"
+    return game_hash[:away][:colors]
+  else return game_hash[:home][:colors]
+  end
+end
+
+def player_numbers(team_name)
+#takes in an argument of a team name and returns an Array of the jersey numbers for that team.
+  output = []
+  game_hash.each do |team, team_info|
+    if team_info[:team_name] == team_name
+      team_info.each do |key, value|
+        if key == :players
+          value.each do |player|
+            output.push(player[:number])
+          end
+        end
+      end
+      return output
+    end
+  end
+end
+
+def player_stats(player_name)
+#returns all stats for a given player
+  game_hash.values.each do |team_info|
+    team_info[:players].each do |player|
+      if player.has_value?(player_name)
+         return player
+      end
+    end
+  end
+end
+
+def big_shoe_rebounds
+  #returns the number of rebounds of the player with the biggest shoe size
+  big_shoe = 0
+  rebounds = 0
+  game_hash.each do |team, team_info|
+    team_info[:players].each do |player|
+      if player[:shoe] > big_shoe
+        big_shoe = player[:shoe]
+        rebounds = player[:rebounds]
+      end
+    end
+  end
+  return rebounds
+end
