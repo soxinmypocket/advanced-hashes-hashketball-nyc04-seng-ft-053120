@@ -176,20 +176,22 @@ def team_colors(team_input)
   end
 end
 
-def player_numbers(input)
+def player_numbers(team)
 #takes in an argument of a team name and returns an Array of the jersey numbers for that team.
   output = []
-  game_hash.each do |team, team_info|
-    if team_info[:team_name] == input
-      team_info.each do |key, value|
-        if key == :players
-          value.each do |player|
-            output.push(player[:number])
-          end
-        end
-      end
+  game_hash.each do |team_info|
+    if team_info.has_value?(team)
+      return team_info[:player].map{|player|player[:number]}
+    #if team_info[:team_name] == input
+    #  team_info.each do |key, value|
+    #    if key == :players
+    #      value.each do |player|
+    #        output.push(player[:number])
+        #  end
+        #end
+      #end
     end
-    return output
+    #return output
 end
 end
 
