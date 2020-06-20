@@ -1,5 +1,4 @@
 require 'pry'
-# Write your code below game_hash
 def game_hash
   {
     home: {
@@ -127,10 +126,10 @@ def game_hash
   }
 end
 
+def get_players
 #num_points_scored returns points scored for each player
 #takes in an argument of a player's name and
 #returns the number of points scored for that player.
-def get_players
   players = game_hash.keys.map do |team|
     game_hash[team][:players]
   end
@@ -138,15 +137,14 @@ def get_players
 end
 
 def num_points_scored(player_name)
-  #Iterate through top level
-  #game_hash.each do |location, team_data| #home and away teams
-  #get all players
+#Iterate through top level
+#game_hash.each do |location, team_data| #home and away teams
+#get all players
     found_player = get_players.find do |player|
       player[:player_name] == player_name
     end
   found_player[:points]
 end
-
 
 def shoe_size(player_name)
 #takes in an argument of a player's name and returns the shoe size for that player
@@ -158,14 +156,11 @@ def shoe_size(player_name)
   found_player[:shoe]
 end
 
-
-
 def team_names
 #operates on the game Hash to return an Array of the team names.
   game_hash.map do |team, team_info|
     team_info[:team_name]
   end
-
 end
 
 def team_colors(team_input)
