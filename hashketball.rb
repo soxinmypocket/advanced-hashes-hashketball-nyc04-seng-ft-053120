@@ -181,7 +181,7 @@ def player_numbers(team)
   #output = []
   game_hash.each do |team_info|
     if team_info.has_value?(team)
-      return team_info[:player].map{|player|player[:number]}
+      return team_info[:player].map{|player| player[:number]}
     #if team_info[:team_name] == input
     #  team_info.each do |key, value|
     #    if key == :players
@@ -191,7 +191,7 @@ def player_numbers(team)
         #end
       #end
     end
-    return player[:number]
+    #return player[:number]
   end
 end
 
