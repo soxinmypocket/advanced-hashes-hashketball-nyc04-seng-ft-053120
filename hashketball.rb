@@ -161,7 +161,7 @@ end
 
 
 def team_names
-  #operates on the game Hash to return an Array of the team names.
+#operates on the game Hash to return an Array of the team names.
   game_hash.map do |team, team_info|
     team_info[:team_name]
   end
@@ -178,9 +178,9 @@ end
 
 def player_numbers(team)
 #takes in an argument of a team name and returns an Array of the jersey numbers for that team.
-  output = []
+  #output = []
   game_hash.each do |team_info|
-    if team_info.has_value?(team)
+    if team_info.has_value(team)
       return team_info[:player].map{|player|player[:number]}
     #if team_info[:team_name] == input
     #  team_info.each do |key, value|
@@ -196,7 +196,7 @@ def player_numbers(team)
 end
 
 def player_stats(player_name)
-
+#returns all stats for a given player
   game_hash.values.each do |team_info|
     team_info[:players].each do |player|
       if player.has_value?(player_name)
@@ -207,6 +207,7 @@ def player_stats(player_name)
 end
 
 def big_shoe_rebounds
+  #returns the number of rebounds of the player with the biggest shoe size
   big_shoe = 0
   rebounds = 0
   game_hash.each do |team, team_info|
