@@ -192,9 +192,8 @@ def player_numbers(team)
       #end
     end
     return player[:number]
+  end
 end
-end
-
 #def player_stats(input)
 #  game_hash.each do |team, team_info|
 #    team_info.each do |key, value|
@@ -220,7 +219,7 @@ def player_stats(player_name)
       end
     end
   end
-
+end
 
 def big_shoe_rebounds
   big_shoe = 0
