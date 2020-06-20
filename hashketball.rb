@@ -191,7 +191,7 @@ def player_numbers(team)
         #end
       #end
     end
-    #return output
+    return player[:number]
 end
 end
 
